@@ -23,6 +23,7 @@ model User {
   updatedAt   DateTime      @updatedAt
   Bookmark    Bookmark[]
   History     History[]
+  Comment     Comment[]
 }
 
 model Bookmark {
@@ -41,3 +42,12 @@ model History {
    createdAt   DateTime      @default(now())
 }
 
+model Comment {
+  comment_id String   @id @default(cuid())
+  user       User     @relation(fields: [userId], references: [user_id])
+  userId     String
+  chapter_id String
+  content    String
+  likes      Int      @default(0) 
+  createdAt  DateTime @default(now())
+}
