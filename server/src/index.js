@@ -15,7 +15,7 @@ app.use(express.json());
 app.use(cors());
 
 app.get("/", (req, res) => {
-  res.send("Volatoon api!");
+  res.send("Volatoon api! is here");
 });
 
 app.use("/api/auth/", authController);
