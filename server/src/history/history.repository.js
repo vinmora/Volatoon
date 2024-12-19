@@ -4,6 +4,9 @@ import axios from "axios"
 const findComicHistoryByuserIdDb = async (userId) => {
     const result = await prisma.history.findMany({
         where: { userId },
+        orderBy: {
+            createdAt: 'desc', // Ensures the latest record comes first
+        },
         distinct: ['komik_id']
     });
 
