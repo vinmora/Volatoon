@@ -79,12 +79,14 @@ router.post("/history", authenticateToken, async (req, res) => {
 
 
 // api untuk nampilin semua history user di satu buah komik
-router.get("/history/chapter", authenticateToken, async (req, res) => {
+router.get("/history/:comicId", authenticateToken, async (req, res) => {
     const { userId } = req.user;
-    const historyData = req.body
+    const comicId = req.params.comicId;
+
+    console.log(comicId)
 
     try {
-        const Result = await findChapterHistory(userId, historyData)
+        const Result = await findChapterHistory(userId, comicId)
 
         res.status(201).json({
             status: 201,
@@ -104,7 +106,9 @@ router.get("/history/chapter", authenticateToken, async (req, res) => {
 
 router.get("/history/latest-chapter", authenticateToken, async (req, res) => {
     const { userId } = req.user;
-    const historyData = req.body
+    const comicId = req.params.comicId;
+
+    console.log(comicId)
 
     try {
         const Result = await findLatestChapterHistory(userId, historyData)

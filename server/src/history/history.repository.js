@@ -44,7 +44,7 @@ const findChapterHistoryByuserIdandComicIdDb = async (userId, searchData) => {
     const result = await prisma.history.findMany({
         where: {
             userId,
-            komik_id: searchData.komikId
+            komik_id: searchData
         }
     });
 
